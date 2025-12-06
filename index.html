@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="Ansh Shah - Full Stack Developer Portfolio. Specialized in React, Node.js, and modern web technologies.">
     <title>Ansh Shah - Full Stack Developer</title>
-
+    
+    <!-- Performance Optimization: Preconnect to critical domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-
+    
+    <!-- Performance Optimization: Preload critical assets -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+    
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -171,14 +173,14 @@
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-
+          
           /* Prevent rubber-banding on iOS if needed, though smooth scroll usually handles it */
           overscroll-behavior-y: none;
-
+          
           /* Better touch handling */
           touch-action: manipulation;
         }
-
+        
         /* Force 16px font size on inputs for mobile to prevent iOS zoom */
         @media screen and (max-width: 768px) {
           input, textarea, select, button {
@@ -186,11 +188,11 @@
           }
         }
       }
-
+      
       .text-balance {
         text-wrap: balance;
       }
-
+      
       /* Mobile-optimized utilities */
       .line-clamp-1 {
         overflow: hidden;
@@ -198,13 +200,14 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
       }
+
       .line-clamp-2 {
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
       }
-
+      
       html {
         scroll-behavior: smooth;
         height: 100%;
@@ -246,14 +249,15 @@
         }
       }
     </style>
-    
+
+    <!-- Fixed Import Map with reliable CDN -->
     <script type="importmap">
       {
         "imports": {
-          "react": "https://esm.sh/react@18.3.1",
-          "react-dom": "https://esm.sh/react-dom@18.3.1",
-          "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
-          "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+          "react": "https://esm.sh/react@19.0.0",
+          "react-dom": "https://esm.sh/react-dom@19.0.0",
+          "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+          "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime",
           "lucide-react": "https://esm.sh/lucide-react@0.469.0",
           "react-router-dom": "https://esm.sh/react-router-dom@6.25.1",
           "clsx": "https://esm.sh/clsx@2.1.1",
@@ -263,11 +267,70 @@
         }
       }
     </script>
+    
+    <!-- Error handling script -->
+    <script type="module">
+      // Catch and display any loading errors
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+        const root = document.getElementById('root');
+        if (root) {
+          root.innerHTML = `
+            <div style="padding: 40px; text-align: center; font-family: 'Inter', sans-serif;">
+              <h2 style="color: #ef4444; font-size: 24px; margin-bottom: 16px;">Error Loading Application</h2>
+              <p style="color: #6b7280; margin-bottom: 8px;">${e.error?.message || 'Unknown error occurred'}</p>
+              <p style="color: #9ca3af; font-size: 14px;">Please check the browser console for more details.</p>
+            </div>
+          `;
+        }
+      });
 
-    <link rel="stylesheet" href="/index.css">
-    <script type="module" crossorigin src="/assets/index-BJJTjIlR.js"></script>
+      // Handle unhandled promise rejections
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+      
+      // Show loading indicator
+      const root = document.getElementById('root');
+      if (root && root.children.length === 0) {
+        root.innerHTML = `
+          <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+            <div style="width: 50px; height: 50px; border: 3px solid #e5e7eb; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <p style="margin-top: 16px; color: #6b7280; font-family: 'Inter', sans-serif;">Loading portfolio...</p>
+          </div>
+        `;
+      }
+    </script>
+    
+    <style>
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loading fallback will be injected by the script above -->
+    </div>
+    
+    <!-- Optional: Add a timeout fallback -->
+    <script>
+      // Show error message if app doesn't load within 5 seconds
+      setTimeout(() => {
+        const root = document.getElementById('root');
+        // Check if still showing loading spinner (no React content loaded)
+        if (root && root.innerHTML.includes('Loading portfolio')) {
+          root.innerHTML = `
+            <div style="padding: 40px; text-align: center; font-family: 'Inter', sans-serif;">
+              <h2 style="color: #f59e0b; font-size: 24px; margin-bottom: 16px;">Taking longer than expected</h2>
+              <p style="color: #6b7280; margin-bottom: 8px;">The application is still loading. Please check your internet connection.</p>
+              <button onclick="window.location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 6px; cursor: pointer;">
+                Retry
+              </button>
+            </div>
+          `;
+        }
+      }, 5000);
+    </script>
   </body>
 </html>
