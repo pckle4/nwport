@@ -1,104 +1,128 @@
+
 "use client"
 
 import React from "react"
 import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
-import { Home, ArrowLeft, WifiOff } from "lucide-react"
+import { Home, AlertTriangle, RefreshCw } from "lucide-react"
 
 export default function NotFound() {
   return (
-    <div className="min-h-[100dvh] flex flex-col items-center justify-center bg-[#050505] text-white relative overflow-hidden font-sans selection:bg-purple-500/30">
+    <div className="min-h-screen bg-[#050505] text-white flex items-center justify-center relative overflow-hidden font-sans selection:bg-red-500/30">
       
-      {/* Background Ambience */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/10 rounded-full blur-[120px]" />
-         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-900/10 rounded-full blur-[120px]" />
-         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
+      {/* Red Alarm Ambience - Background */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-900/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 animate-pulse duration-1000" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-red-900/5 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#200000_1px,transparent_1px),linear-gradient(to_bottom,#200000_1px,transparent_1px)] bg-[size:40px_40px] opacity-20" />
       </div>
 
-      {/* Spotlight from top */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[400px] bg-gradient-to-b from-white/10 to-transparent blur-[60px] pointer-events-none" />
+      <div className="container max-w-6xl mx-auto px-6 relative z-10 py-12">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-      {/* Hanging Sign Animation */}
-      <div className="relative z-10 flex flex-col items-center mt-[-60px] sm:mt-[-80px]">
-        
-        {/* Wires */}
-        <div className="flex gap-24 sm:gap-32 mb-[-2px] relative z-0">
-          <div className="w-[1px] h-[120px] sm:h-[150px] bg-gradient-to-b from-transparent via-gray-700 to-gray-800 opacity-60"></div>
-          <div className="w-[1px] h-[120px] sm:h-[150px] bg-gradient-to-b from-transparent via-gray-700 to-gray-800 opacity-60"></div>
+          {/* Left Column: The Hanging Mechanism */}
+          <div className="relative flex flex-col items-center justify-start h-[400px] md:h-[500px]">
+              
+              {/* Static Ceiling Beam */}
+              <div className="w-full max-w-xs h-6 bg-gradient-to-b from-gray-800 to-gray-900 rounded-full shadow-2xl border-b border-gray-700 z-20 relative flex items-center justify-between px-6">
+                  <div className="w-3 h-3 rounded-full bg-gray-600 shadow-inner"></div>
+                  <div className="w-3 h-3 rounded-full bg-gray-600 shadow-inner"></div>
+              </div>
+
+              {/* Swinging Assembly */}
+              <div className="animate-swing origin-top z-10 -mt-2">
+                  {/* Wires */}
+                  <div className="h-32 w-64 mx-auto flex justify-between px-12 relative">
+                      {/* Left Wire */}
+                      <div className="w-1 h-full bg-gradient-to-b from-gray-700 via-gray-600 to-gray-800 opacity-90 shadow-sm origin-top"></div>
+                      {/* Right Wire */}
+                      <div className="w-1 h-full bg-gradient-to-b from-gray-700 via-gray-600 to-gray-800 opacity-90 shadow-sm origin-top"></div>
+                  </div>
+
+                  {/* The Board */}
+                  <div className="relative bg-[#080808] border-[3px] border-red-900/60 p-8 rounded-xl shadow-[0_0_40px_rgba(220,38,38,0.15)] flex flex-col items-center justify-center w-[300px] sm:w-[350px] transform hover:rotate-1 transition-transform duration-300 group">
+                      
+                      {/* Screws */}
+                      <div className="absolute top-3 left-3 w-3 h-3 rounded-full bg-gray-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-gray-600 rotate-45 mt-1.5"></div></div>
+                      <div className="absolute top-3 right-3 w-3 h-3 rounded-full bg-gray-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-gray-600 rotate-12 mt-1.5"></div></div>
+                      <div className="absolute bottom-3 left-3 w-3 h-3 rounded-full bg-gray-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-gray-600 -rotate-45 mt-1.5"></div></div>
+                      <div className="absolute bottom-3 right-3 w-3 h-3 rounded-full bg-gray-800 shadow-[inset_0_1px_2px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-gray-600 rotate-90 mt-1.5"></div></div>
+
+                      {/* Content */}
+                      <div className="flex items-center gap-2 mb-3 opacity-90">
+                          <AlertTriangle className="w-5 h-5 text-red-500 animate-pulse" />
+                          <span className="text-red-500 font-mono text-[10px] tracking-[0.2em] uppercase">System Failure</span>
+                      </div>
+                      
+                      <h1 className="text-8xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-gray-100 to-gray-600 drop-shadow-sm group-hover:scale-105 transition-transform duration-500">
+                          404
+                      </h1>
+
+                      <div className="w-full h-px bg-red-900/30 my-4"></div>
+
+                      <div className="font-mono text-xs text-red-400/80 tracking-widest uppercase">
+                          Page Not Found
+                      </div>
+
+                      {/* Warning Sticker */}
+                      <div className="absolute -bottom-5 -right-5 bg-red-600 text-black font-extrabold text-[10px] px-4 py-1.5 rotate-[-10deg] shadow-lg border border-red-400 z-20">
+                          CRITICAL ERROR
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          {/* Right Column: Text & Interaction */}
+          <div className="text-center md:text-left space-y-8 max-w-lg mx-auto md:mx-0">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono">
+                    <div className="w-2 h-2 rounded-full bg-red-500 animate-ping"></div>
+                    CONNECTION_LOST
+                </div>
+
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+                    Houston, we have a <span className="text-red-500">problem</span>.
+                </h2>
+                
+                <p className="text-gray-400 text-lg leading-relaxed">
+                    The page you are looking for has been abducted by aliens 👽, eaten by a black hole, or simply never existed. 
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center md:justify-start">
+                  <Button 
+                    asChild 
+                    size="lg" 
+                    className="h-12 px-8 rounded-full bg-red-600 hover:bg-red-700 text-white shadow-[0_0_20px_rgba(220,38,38,0.3)] transition-all hover:scale-105 border-0 font-semibold"
+                  >
+                    <Link to="/">
+                        <Home className="w-4 h-4 mr-2" />
+                        Emergency Reboot
+                    </Link>
+                  </Button>
+                  
+                   <Button 
+                    asChild 
+                    variant="outline"
+                    size="lg" 
+                    className="h-12 px-8 rounded-full border-gray-700 bg-transparent text-gray-400 hover:text-white hover:bg-white/5 transition-all"
+                  >
+                    <Link to="#" onClick={(e) => { e.preventDefault(); window.location.reload(); }}>
+                        <RefreshCw className="w-4 h-4 mr-2" />
+                        Retry Signal
+                    </Link>
+                  </Button>
+              </div>
+
+              <div className="pt-4 border-t border-gray-900/50">
+                  <p className="font-mono text-xs text-gray-600">
+                      ERROR_CODE: 0x404_NOT_FOUND <br/>
+                      TIMESTAMP: {new Date().toISOString()}
+                  </p>
+              </div>
+          </div>
+
         </div>
-
-        {/* The Sign */}
-        <div className="relative z-10 animate-swing origin-top">
-             <div className="relative bg-black/80 backdrop-blur-xl border-4 border-gray-800 p-8 sm:p-12 rounded-2xl shadow-2xl flex flex-col items-center justify-center transform hover:scale-[1.02] transition-transform duration-500">
-                 
-                 {/* Screws */}
-                 <div className="absolute top-4 left-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
-                    <div className="w-full h-[1px] bg-gray-900 rotate-45"></div>
-                    <div className="w-full h-[1px] bg-gray-900 -rotate-45 absolute"></div>
-                 </div>
-                 <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
-                     <div className="w-full h-[1px] bg-gray-900 rotate-12"></div>
-                     <div className="w-full h-[1px] bg-gray-900 -rotate-12 absolute"></div>
-                 </div>
-                 <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
-                    <div className="w-full h-[1px] bg-gray-900 rotate-90"></div>
-                    <div className="w-full h-[1px] bg-gray-900 absolute"></div>
-                 </div>
-                 <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
-                     <div className="w-full h-[1px] bg-gray-900 rotate-45"></div>
-                     <div className="w-full h-[1px] bg-gray-900 -rotate-45 absolute"></div>
-                 </div>
-
-                 {/* Neon Text */}
-                 <h1 className="text-7xl sm:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
-                   404
-                 </h1>
-                 <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50 mt-4 mb-3"></div>
-                 <p className="text-xs sm:text-sm font-mono text-purple-400 tracking-[0.3em] uppercase">
-                    Page Not Found
-                 </p>
-             </div>
-        </div>
-      </div>
-
-      {/* Text Content */}
-      <div className="mt-12 text-center z-10 px-6 max-w-lg space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-          <div className="inline-flex items-center justify-center p-3 bg-red-500/10 rounded-full mb-2 ring-1 ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
-              <WifiOff className="w-6 h-6 text-red-400" />
-          </div>
-          
-          <div>
-            <h2 className="text-2xl font-bold text-gray-200 mb-2">Connection Lost in Void</h2>
-            <p className="text-gray-500 leading-relaxed text-sm">
-               The coordinates you entered point to a sector that doesn't exist or has been moved to a different galaxy.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-            <Button 
-                asChild 
-                size="lg" 
-                className="w-full sm:w-auto h-12 rounded-full bg-white text-black hover:bg-gray-200 transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.1)] font-semibold"
-            >
-              <Link to="/">
-                <Home className="w-4 h-4 mr-2" />
-                Return to Base
-              </Link>
-            </Button>
-            
-            <Button 
-                asChild 
-                variant="outline" 
-                size="lg" 
-                className="w-full sm:w-auto h-12 rounded-full border-gray-800 bg-transparent text-gray-400 hover:text-white hover:bg-white/5 transition-all"
-            >
-              <Link to="#" onClick={(e) => { e.preventDefault(); window.history.back(); }}>
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Go Back
-              </Link>
-            </Button>
-          </div>
       </div>
     </div>
   )
