@@ -1,7 +1,7 @@
 
 
 import React, { Suspense, useEffect, useState } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
 import { ThemeProvider } from './components/theme-provider';
 import { EnhancedHeader } from './components/enhanced-header';
 import { OptimizedMobileHero } from './components/optimized-mobile-hero';
@@ -32,20 +32,22 @@ const SectionSkeleton = () => (
 
 // Component to handle scrolling to hash
 const ScrollToHash = () => {
-  const { hash } = useLocation();
+  const { hash, pathname } = useLocation();
 
   React.useEffect(() => {
+    // Only scroll to hash if it exists
     if (hash) {
       setTimeout(() => {
         const element = document.getElementById(hash.replace('#', ''));
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }, 100); // Small delay to allow Suspense to hydrate
+      }, 100);
     } else {
+      // Scroll to top on route change (e.g. / to /resume)
       window.scrollTo(0, 0);
     }
-  }, [hash]);
+  }, [hash, pathname]);
 
   return null;
 };
@@ -113,8 +115,6 @@ export default function App() {
       setLoading(false);
     } else {
       // If first time, keep loading true (TechPreloader handles timing)
-      // We set the flag inside the onComplete handler of the preloader or here if preferred,
-      // but usually better to set it after animation completes.
     }
   }, []);
 
