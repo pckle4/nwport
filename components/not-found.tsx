@@ -1,118 +1,104 @@
-
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
-import { Home, AlertTriangle, Power } from "lucide-react"
-import { cn } from "../lib/utils"
+import { Home, ArrowLeft, WifiOff } from "lucide-react"
 
 export default function NotFound() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-[#050000] text-white relative overflow-hidden font-sans select-none p-6">
-
-      {/* Background Ambience - Red Emergency Theme */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-50">
-         <div className="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-red-900/20 rounded-full blur-[120px] animate-pulse" style={{ animationDuration: '4s' }} />
-         <div className="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] bg-orange-900/10 rounded-full blur-[120px]" />
-         {/* CRT Scanline Effect */}
-         <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(255,0,0,0.02),rgba(255,0,0,0.06))] bg-[length:100%_4px,3px_100%] pointer-events-none" />
+    <div className="min-h-[100dvh] flex flex-col items-center justify-center bg-[#050505] text-white relative overflow-hidden font-sans selection:bg-purple-500/30">
+      
+      {/* Background Ambience */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/10 rounded-full blur-[120px]" />
+         <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-900/10 rounded-full blur-[120px]" />
+         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
       </div>
 
-      {/* Main Content Grid */}
-      <div className="relative z-10 grid md:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl w-full">
+      {/* Spotlight from top */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[400px] bg-gradient-to-b from-white/10 to-transparent blur-[60px] pointer-events-none" />
 
-        {/* Left Column: Hanging Visual */}
-        {/* Added padding top to ensure beam is visible and not cut off */}
-        <div className="flex flex-col items-center justify-start h-[450px] relative pt-10">
-            
-            {/* Ceiling/Beam - Anchored clearly */}
-            <div className="absolute top-10 w-48 h-4 bg-neutral-800 rounded-lg shadow-2xl z-20 border-b-2 border-neutral-700 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-red-500/50 animate-ping absolute right-3"></div>
-                <div className="w-2 h-2 rounded-full bg-red-500 absolute right-3"></div>
-                
-                {/* Bolt details */}
-                <div className="absolute left-2 w-1.5 h-1.5 rounded-full bg-neutral-600"></div>
-                <div className="absolute right-8 w-1.5 h-1.5 rounded-full bg-neutral-600"></div>
-            </div>
+      {/* Hanging Sign Animation */}
+      <div className="relative z-10 flex flex-col items-center mt-[-60px] sm:mt-[-80px]">
+        
+        {/* Wires */}
+        <div className="flex gap-24 sm:gap-32 mb-[-2px] relative z-0">
+          <div className="w-[1px] h-[120px] sm:h-[150px] bg-gradient-to-b from-transparent via-gray-700 to-gray-800 opacity-60"></div>
+          <div className="w-[1px] h-[120px] sm:h-[150px] bg-gradient-to-b from-transparent via-gray-700 to-gray-800 opacity-60"></div>
+        </div>
 
-            {/* HD Wires - Positioned relative to beam to ensure connection */}
-            <svg className="absolute top-[50px] w-64 h-[120px] z-10 pointer-events-none drop-shadow-md overflow-visible" viewBox="0 0 256 120">
-                 {/* Left Wire */}
-                 <line x1="85" y1="0" x2="85" y2="120" stroke="#525252" strokeWidth="3" />
-                 {/* Right Wire */}
-                 <line x1="171" y1="0" x2="171" y2="120" stroke="#525252" strokeWidth="3" />
+        {/* The Sign */}
+        <div className="relative z-10 animate-swing origin-top">
+             <div className="relative bg-black/80 backdrop-blur-xl border-4 border-gray-800 p-8 sm:p-12 rounded-2xl shadow-2xl flex flex-col items-center justify-center transform hover:scale-[1.02] transition-transform duration-500">
                  
-                 {/* Wire Knots/Joints at top */}
-                 <circle cx="85" cy="0" r="4" fill="#404040" />
-                 <circle cx="171" cy="0" r="4" fill="#404040" />
-            </svg>
-
-            {/* The Board - Pushed down by wire length */}
-            <div className="mt-[118px] origin-top animate-swing will-change-transform">
-                 <div className="relative bg-[#0F0505] border-4 border-red-900/50 p-8 sm:p-12 rounded-xl shadow-[0_0_50px_rgba(220,38,38,0.25)] flex flex-col items-center justify-center transform group">
-                     
-                     {/* Warning Stripes on Top Border */}
-                     <div className="absolute top-0 left-0 right-0 h-2 bg-[repeating-linear-gradient(45deg,#000,#000_10px,#b91c1c_10px,#b91c1c_20px)] opacity-50 rounded-t-lg"></div>
-
-                     {/* Screws */}
-                     <div className="absolute top-4 left-4 w-3 h-3 rounded-full bg-neutral-800 border border-neutral-900 shadow-inner flex items-center justify-center"><div className="w-1.5 h-0.5 bg-neutral-950"></div></div>
-                     <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-neutral-800 border border-neutral-900 shadow-inner flex items-center justify-center"><div className="w-1.5 h-0.5 bg-neutral-950"></div></div>
-                     
-                     {/* Glowing 404 */}
-                     <h1 className="text-8xl sm:text-9xl font-black tracking-tighter text-red-600 drop-shadow-[0_0_15px_rgba(220,38,38,0.8)] font-mono glitch-text">
-                       404
-                     </h1>
-
-                     {/* Sticker - Taped Look */}
-                     <div className="absolute -bottom-6 rotate-2 bg-red-600 text-black px-6 py-2 font-bold font-mono text-sm uppercase tracking-widest shadow-xl border-2 border-red-400">
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 h-4 bg-white/20 rotate-90 blur-[1px]"></div> {/* Tape effect */}
-                        System Failure
-                     </div>
+                 {/* Screws */}
+                 <div className="absolute top-4 left-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
+                    <div className="w-full h-[1px] bg-gray-900 rotate-45"></div>
+                    <div className="w-full h-[1px] bg-gray-900 -rotate-45 absolute"></div>
                  </div>
-            </div>
+                 <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
+                     <div className="w-full h-[1px] bg-gray-900 rotate-12"></div>
+                     <div className="w-full h-[1px] bg-gray-900 -rotate-12 absolute"></div>
+                 </div>
+                 <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
+                    <div className="w-full h-[1px] bg-gray-900 rotate-90"></div>
+                    <div className="w-full h-[1px] bg-gray-900 absolute"></div>
+                 </div>
+                 <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full bg-gray-700 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)] flex items-center justify-center">
+                     <div className="w-full h-[1px] bg-gray-900 rotate-45"></div>
+                     <div className="w-full h-[1px] bg-gray-900 -rotate-45 absolute"></div>
+                 </div>
+
+                 {/* Neon Text */}
+                 <h1 className="text-7xl sm:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+                   404
+                 </h1>
+                 <div className="w-full h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent opacity-50 mt-4 mb-3"></div>
+                 <p className="text-xs sm:text-sm font-mono text-purple-400 tracking-[0.3em] uppercase">
+                    Page Not Found
+                 </p>
+             </div>
         </div>
+      </div>
 
-        {/* Right Column: Text & Action */}
-        <div className={`text-center md:text-left space-y-8 transition-all duration-1000 ${mounted ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-            <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-900/20 border border-red-800/50 text-red-500 text-xs font-mono mb-2">
-                    <AlertTriangle className="w-3 h-3" />
-                    <span>CRITICAL_PATH_ERROR</span>
-                </div>
-                
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1]">
-                   Protocol <span className="text-red-600">Terminated</span>.
-                </h2>
-                
-                <p className="text-gray-400 text-lg sm:text-xl leading-relaxed max-w-lg mx-auto md:mx-0">
-                   The requested sector does not exist or has been corrupted. Immediate relocation is advised to prevent data loss.
-                </p>
-            </div>
+      {/* Text Content */}
+      <div className="mt-12 text-center z-10 px-6 max-w-lg space-y-6 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+          <div className="inline-flex items-center justify-center p-3 bg-red-500/10 rounded-full mb-2 ring-1 ring-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]">
+              <WifiOff className="w-6 h-6 text-red-400" />
+          </div>
+          
+          <div>
+            <h2 className="text-2xl font-bold text-gray-200 mb-2">Connection Lost in Void</h2>
+            <p className="text-gray-500 leading-relaxed text-sm">
+               The coordinates you entered point to a sector that doesn't exist or has been moved to a different galaxy.
+            </p>
+          </div>
 
-            <div className="flex justify-center md:justify-start">
-               <Button 
-                   asChild 
-                   className="h-14 px-8 rounded-xl bg-red-600 text-white hover:bg-red-700 font-bold text-lg shadow-[0_0_30px_rgba(220,38,38,0.3)] transition-all hover:scale-105 active:scale-95 group border border-red-500/50"
-               >
-                 <Link to="/">
-                   <Power className="w-5 h-5 mr-2.5 group-hover:text-black transition-colors" />
-                   Initiate Reboot
-                 </Link>
-               </Button>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <Button 
+                asChild 
+                size="lg" 
+                className="w-full sm:w-auto h-12 rounded-full bg-white text-black hover:bg-gray-200 transition-all hover:scale-105 shadow-[0_0_20px_rgba(255,255,255,0.1)] font-semibold"
+            >
+              <Link to="/">
+                <Home className="w-4 h-4 mr-2" />
+                Return to Base
+              </Link>
+            </Button>
             
-            <div className="font-mono text-[10px] text-red-900/50 pt-10">
-                ERROR_CODE: 0x404_NOT_FOUND // STACK_TRACE_NULL
-            </div>
-        </div>
-
+            <Button 
+                asChild 
+                variant="outline" 
+                size="lg" 
+                className="w-full sm:w-auto h-12 rounded-full border-gray-800 bg-transparent text-gray-400 hover:text-white hover:bg-white/5 transition-all"
+            >
+              <Link to="#" onClick={(e) => { e.preventDefault(); window.history.back(); }}>
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Go Back
+              </Link>
+            </Button>
+          </div>
       </div>
     </div>
   )
