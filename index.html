@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,18 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="Ansh Shah - Full Stack Developer Portfolio. Specialized in React, Node.js, and modern web technologies.">
     <title>Ansh Shah - Full Stack Developer</title>
-    
-    <!-- Performance Optimization: Preconnect to critical domains -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    
-    <!-- Performance Optimization: Preload critical assets -->
+
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <script>
       tailwind.config = {
         darkMode: 'class',
@@ -174,14 +171,14 @@
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
-          
+
           /* Prevent rubber-banding on iOS if needed, though smooth scroll usually handles it */
           overscroll-behavior-y: none;
-          
+
           /* Better touch handling */
           touch-action: manipulation;
         }
-        
+
         /* Force 16px font size on inputs for mobile to prevent iOS zoom */
         @media screen and (max-width: 768px) {
           input, textarea, select, button {
@@ -189,11 +186,11 @@
           }
         }
       }
-      
+
       .text-balance {
         text-wrap: balance;
       }
-      
+
       /* Mobile-optimized utilities */
       .line-clamp-1 {
         overflow: hidden;
@@ -201,14 +198,13 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
       }
-
       .line-clamp-2 {
         overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
       }
-      
+
       html {
         scroll-behavior: smooth;
         height: 100%;
@@ -250,25 +246,27 @@
         }
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/client": "https://aistudiocdn.com/react-dom@^19.2.0/client",
-    "react-dom": "https://aistudiocdn.com/react-dom@^19.2.0",
-    "react/jsx-runtime": "https://aistudiocdn.com/react@^19.2.0/jsx-runtime",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.469.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
-    "clsx": "https://aistudiocdn.com/clsx@^2.1.1",
-    "tailwind-merge": "https://aistudiocdn.com/tailwind-merge@^3.4.0",
-    "@radix-ui/react-slot": "https://aistudiocdn.com/@radix-ui/react-slot@^1.2.4",
-    "react-icon-cloud": "https://aistudiocdn.com/react-icon-cloud@^4.1.7",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "react/": "https://aistudiocdn.com/react@^19.2.1/"
-  }
-}
-</script>
-</head>
+    
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.3.1",
+          "react-dom": "https://esm.sh/react-dom@18.3.1",
+          "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+          "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+          "lucide-react": "https://esm.sh/lucide-react@0.469.0",
+          "react-router-dom": "https://esm.sh/react-router-dom@6.25.1",
+          "clsx": "https://esm.sh/clsx@2.1.1",
+          "tailwind-merge": "https://esm.sh/tailwind-merge@2.4.0",
+          "@radix-ui/react-slot": "https://esm.sh/@radix-ui/react-slot@1.2.4",
+          "react-icon-cloud": "https://esm.sh/react-icon-cloud@4.1.7"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/index.css">
+    <script type="module" crossorigin src="/assets/index-BJJTjIlR.js"></script>
+  </head>
   <body>
     <div id="root"></div>
   </body>
