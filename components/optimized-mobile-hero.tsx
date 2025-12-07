@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useState, useEffect, useRef, MouseEvent } from "react"
@@ -204,13 +203,18 @@ export function OptimizedMobileHero() {
         {/* Shimmering Rotating Border Badge */}
         <div className="mb-8 flex justify-center animate-fade-in relative z-20">
           <div className="group relative inline-flex overflow-hidden rounded-full p-[2px]">
-            <span className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#4c1d95_0%,#d8b4fe_50%,#4c1d95_100%)]" />
-            <div className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-white/90 dark:bg-black/90 px-4 py-1.5 text-sm font-medium backdrop-blur-3xl">
+            {/* Continuous Rotating Gradient Border - Monochromatic
+                Light Mode: Dark shimmer (Slate 700)
+                Dark Mode: Light shimmer (Slate 100/White) 
+            */}
+            <span className="absolute inset-[-1000%] animate-spin-slow bg-[conic-gradient(from_90deg_at_50%_50%,#E2E8F0_0%,#334155_50%,#E2E8F0_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#0F172A_0%,#F8FAFC_50%,#0F172A_100%)]" />
+            
+            <div className="inline-flex h-full w-full cursor-default items-center justify-center rounded-full bg-white dark:bg-black px-4 py-1.5 text-sm font-medium backdrop-blur-3xl">
               <span className="relative flex h-2 w-2 mr-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
-              <span className="bg-gradient-to-r from-purple-600 to-blue-600 dark:from-purple-200 dark:to-blue-200 bg-clip-text text-transparent">
+              <span className="text-gray-700 dark:text-gray-200 group-hover:text-black dark:group-hover:text-white transition-colors duration-300">
                 Available for freelance work
               </span>
             </div>
